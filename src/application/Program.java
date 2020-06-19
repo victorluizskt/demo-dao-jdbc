@@ -8,6 +8,7 @@ package application;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
 import model.entities.Department;
@@ -24,6 +25,7 @@ public class Program {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
+        Scanner input = new Scanner(System.in);
         SellerDao sellerDao = DaoFactory.creatSellerDao();
         System.out.println("=== TEST 1: seller findById ===");
         Seller seller = sellerDao.findById(3);
@@ -48,6 +50,12 @@ public class Program {
         seller.setName("Martha Waine");
         sellerDao.update(seller);
         System.out.println("Update completeed.");
+        
+        System.out.println("\n=== TEST 6: seller delete ===");
+        System.out.println("Enter id for delete test: ");
+        int id = input.nextInt();
+        sellerDao.deleteById(id);
+//        System.out.println("Delete completed.");
     }
 
 }
